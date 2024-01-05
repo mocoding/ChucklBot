@@ -1,7 +1,6 @@
 """
 
 TODO: ask and store name for personaliziation.
-TODO: unit test. (In Progress)
 TODO: better code documentation, explanation what functions do / return / expect.
 
 """

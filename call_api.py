@@ -1,7 +1,7 @@
 """
 
 TODO: put category in response for more accurate description of joke from BOT.
-TODO: create a 'get all jokes' to give information about all jokes ever told in this session. count and fetch.
+TODO: create a 'get all jokes' to give information about all jokes ever told in this session. use tuple, count and fetch.
 
 """
 import logging as log
@@ -60,10 +60,9 @@ def get_last_joke():
             if r.status_code != 200:  # API availibility check.
                 # if status_code not 200. log error.
                 log.error("get_last_joke(): request status_code error: %s", r.status_code)
-                raise SystemError('Ups. API is down.')  # TODO: not sure if that raise makes sense!
+                raise SystemError('Ups. API is down.')
 
             joke_dict = r.json()  # store api load in dict().
-            # FIXME: should I return only one value (list) and make the differentiation whoever receives the values? (DONE)
             value = (joke_dict['joke'], last_id)
             return value  # return joke and joke_id as list.
         except request.exceptions.RequestException as e:

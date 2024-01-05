@@ -1,10 +1,7 @@
 """
 
-TODO: move from textfile to JSON, easier handling and better structure. (DONE)
 TODO: store multiple jokes and randomly picking one as return.
-TODO: logging. (DONE)
 TODO: unit - test!
-TODO: save favorite joke w/ ID to have more flexibility. (DONE)
 
 """
 import json
@@ -14,7 +11,6 @@ from pathlib import Path
 from call_api import get_last_joke as last_joke
 
 
-# fixme: if last_joke was favorite, it needs to be a message that this is your favorite already.
 def save_favorite():
     joke, joke_id = last_joke()  # get last joke and joke_id/NONE if empty joke tuple.
 

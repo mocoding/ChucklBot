@@ -1,7 +1,7 @@
 """
 unit test to test program life-lines.
 
-- test if fuzzy matching still works -> chat-bot.
+- test if fuzzy matching still works
 - test get_joke, api call.
 
 """
