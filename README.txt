@@ -2,7 +2,7 @@
 ------------------------------------------------------------------------------------------------------
 A command-line-based chatbot that can tell jokes and engage in simple small talk.
 
-Note: Start -> bot.py.
+Note: Start -> src/main.py.
 Unit tests for the program are under test_boy.py.
 
 Implementation:
