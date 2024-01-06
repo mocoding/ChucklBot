@@ -8,21 +8,22 @@ import json
 import logging as log
 
 from pathlib import Path
-from call_api import get_last_joke as last_joke
+from .call_api import get_last_joke as last_joke
 
 
 def save_favorite():
-    joke, joke_id = last_joke()  # get last joke and joke_id/NONE if empty joke tuple.
+    try:
+        joke, joke_id = last_joke()  # get last joke and joke_id/NONE if empty joke tuple.
+    except SystemError:
+        log.error("save_favorite(): System Error in last_joke().")
+        return f"Sorry, I had a problem fetching your joke."
 
-    if joke == "nojoke":  # nojoke == tuple empty.
-        log.warning("save_favorite(): No jokes favored. last_joke(): %s", joke)
+    if joke is None:  # tuple empty == no joke.
+        log.warning("save_favorite(): joke value is None. last_joke(): %s", joke)
         return f"You have no favorite joke, yet!"
-    elif joke == "error":
-        log.error("save_favorite(): last_joke() error: %s", joke)
-        return f"Oh oh, I had problems fetching your last joke."
     else:
         try:
-            path = Path('favorite_jokes.json')  # file path via Path object
+            path = Path('../resources/favorite_jokes.json')  # file path via Path object
             content = json.dumps(last_joke())  # serializes dict last_joke into JSON formatted string.
             path.write_text(content)  # write JSON string in JSON file.
             log.info("save_favorite(): Joke saved as favorite: joke_id: %s", joke_id)  # log success.
@@ -32,11 +33,12 @@ def save_favorite():
         except IOError as e:
             # handle IO (most common) file exceptions.
             log.error("save_favorite(): JSON file exception in saving favorite joke: %s", e)
+            # raise IOError("Oh no - I had a problem remembering this joke") from e
             return f"Oh oh - I had a problem remembering this joke."
 
 
 def get_favorite():
-    path = Path('favorite_jokes.json')
+    path = Path('../resources/favorite_jokes.json')
 
     if path.exists():
         content = path.read_text()
@@ -51,8 +53,9 @@ def get_favorite():
         except ValueError as e:
             # handle format exceptions in the json.
             log.error("get_favorite(): ValueError fetching favorite joke: %s", e)
-            return f"Oh no, I had a problem fetching your favorite joke.", None  # main expects two values -> return an extra none.
+            raise ValueError("Oh no, I had a problem fetching your favorite joke") from e
+            # return f"Oh no, I had a problem fetching your favorite joke.", None  # main expects two values.
 
     else:  # no json == no jokes saved.
-        log.warning("get_favorite(): No favorite_jokes.json.")
+        log.warning("get_favorite(): No file: favorite_jokes.json.")
         return f"Oh - You have no favorite joke, yet.", None  # main expects two values -> return an extra none.

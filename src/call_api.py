@@ -39,16 +39,16 @@ def get_joke(test_api_endpoint=None):
     except request.exceptions.RequestException as e:
         # handle api request exception.
         log.exception("Error message: %s", e)
-        return f"error"
+        return f"error"  # FIXME: move away from return error. Either return None or raise!
 
 
 # get the last joke.
 def get_last_joke():
     global jokes  # declare global variable.
 
-    if jokes == ():  # if tuple is empty, no jokes can be retrieved.
+    if not jokes:  # if tuple is empty, no jokes can be retrieved.
         log.warning("get_last_joke(): Joke tuple is empty.")
-        return f"nojoke", None
+        return None, None  # None - as no joke in tuple.
     else:
         last_id = str(jokes[len(jokes) - 1])  # get id of last joke.
         # log.debug("get_last_joke(): jokes tuple, last_id: %s", last_id)  # debugging. check accuracy of last joke id.
@@ -68,4 +68,4 @@ def get_last_joke():
         except request.exceptions.RequestException as e:
             # handle get last joke _ api request exception.
             log.exception("get_last_joke(): API exception: %s", e)
-            return f"error", None
+            raise SystemError("Failed to fetch last joke.") from e

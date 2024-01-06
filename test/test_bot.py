@@ -1,14 +1,14 @@
 """
 unit test to test program life-lines.
 
-- test if fuzzy matching still works
+- test if fuzzy matching -> dict() still works
 - test get_joke, api call.
 
 """
 
-from bot import respond_to_input
-from call_api import get_joke
-from commands_data import commands
+from src.main import respond_to_input
+from src.call_api import get_joke
+from resources.commands_data import commands
 
 
 def test_greetings_category():

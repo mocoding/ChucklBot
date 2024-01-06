@@ -1,0 +1,63 @@
+2024-01-06 17:23:38,499 - INFO - - session start -
+2024-01-06 17:23:40,410 - ERROR - get_favorite(): ValueError fetching favorite joke: Expecting value: line 1 column 1 (char 0)
+2024-01-06 17:23:46,374 - INFO - - session end -
+2024-01-06 17:24:03,596 - INFO - - session start -
+2024-01-06 17:24:05,492 - ERROR - get_favorite(): ValueError fetching favorite joke: Expecting value: line 1 column 1 (char 0)
+2024-01-06 17:24:07,474 - ERROR - get_favorite(): ValueError fetching favorite joke: Expecting value: line 1 column 1 (char 0)
+2024-01-06 17:24:07,510 - INFO - copy_to_clipboard(): Favorite joke copied to clipboard. joke_id: None
+2024-01-06 17:24:35,598 - ERROR - get_favorite(): ValueError fetching favorite joke: Expecting value: line 1 column 1 (char 0)
+2024-01-06 17:24:46,955 - INFO - - session end -
+2024-01-06 17:25:30,026 - INFO - - session start -
+2024-01-06 17:25:31,951 - WARNING - get_last_joke(): Joke tuple is empty.
+2024-01-06 17:25:35,147 - ERROR - get_favorite(): ValueError fetching favorite joke: Expecting value: line 1 column 1 (char 0)
+2024-01-06 17:25:37,221 - ERROR - get_favorite(): ValueError fetching favorite joke: Expecting value: line 1 column 1 (char 0)
+2024-01-06 17:25:47,975 - WARNING - respond_to_input(): no category match. user_input = 
+2024-01-06 17:25:50,089 - INFO - - session end -
+2024-01-06 17:31:25,307 - INFO - - session start -
+2024-01-06 17:31:26,981 - ERROR - get_favorite(): ValueError fetching favorite joke: Expecting value: line 1 column 1 (char 0)
+2024-01-06 17:31:30,077 - ERROR - get_favorite(): ValueError fetching favorite joke: Expecting value: line 1 column 1 (char 0)
+2024-01-06 17:33:25,052 - INFO - - session start -
+2024-01-06 17:33:26,898 - ERROR - get_favorite(): ValueError fetching favorite joke: Expecting value: line 1 column 1 (char 0)
+2024-01-06 17:33:28,763 - ERROR - get_favorite(): ValueError fetching favorite joke: Expecting value: line 1 column 1 (char 0)
+2024-01-06 17:33:31,572 - INFO - - session end -
+2024-01-06 17:35:23,968 - INFO - - session start -
+2024-01-06 17:35:29,946 - WARNING - get_last_joke(): Joke tuple is empty.
+2024-01-06 17:35:32,630 - WARNING - get_last_joke(): Joke tuple is empty.
+2024-01-06 17:35:36,060 - ERROR - get_favorite(): ValueError fetching favorite joke: Expecting value: line 1 column 1 (char 0)
+2024-01-06 17:35:38,702 - ERROR - get_favorite(): ValueError fetching favorite joke: Expecting value: line 1 column 1 (char 0)
+2024-01-06 17:36:15,140 - WARNING - except KeyboardInterrupt - User terminated app.
+2024-01-06 17:36:17,830 - INFO - - session start -
+2024-01-06 17:36:26,529 - INFO - Joke successfully fetched. Joke ID: 195
+2024-01-06 17:36:30,091 - INFO - copy_to_clipboard(): Joke copied to clipboard. joke_id = 195
+2024-01-06 17:36:35,745 - INFO - save_favorite(): Joke saved as favorite: joke_id: 195
+2024-01-06 17:36:38,526 - INFO - get_favorite(): Favorite joke successfully fetched. joke_id: 195
+2024-01-06 17:36:40,736 - INFO - get_favorite(): Favorite joke successfully fetched. joke_id: 195
+2024-01-06 17:36:47,257 - WARNING - respond_to_input(): no category match. user_input = Relationship Status: just tried to reach for my dog's paw and he pulled it away so I pretended I was reaching for the remote.(by ChucklBot)
+2024-01-06 17:36:49,319 - INFO - - session end -
+2024-01-06 18:00:04,261 - INFO - - session start -
+2024-01-06 18:00:08,487 - INFO - Joke successfully fetched. Joke ID: 257
+2024-01-06 18:00:13,228 - INFO - save_favorite(): Joke saved as favorite: joke_id: 257
+2024-01-06 18:00:16,033 - INFO - copy_to_clipboard(): Joke copied to clipboard. joke_id = 257
+2024-01-06 18:00:16,899 - WARNING - respond_to_input(): no category match. user_input = My wife and I have reached the difficult decision that we do not want children.
+2024-01-06 18:00:17,196 - WARNING - respond_to_input(): no category match. user_input = If anybody does, please just send me your contact details and we can drop them off tomorrow.(by ChucklBot)
+2024-01-06 18:00:19,789 - INFO - - session end -
+2024-01-06 18:00:53,191 - INFO - - session start -
+2024-01-06 18:00:59,985 - INFO - Joke successfully fetched. Joke ID: 20
+2024-01-06 18:42:56,667 - INFO - Joke successfully fetched. Joke ID: 35
+2024-01-06 18:43:03,839 - INFO - copy_to_clipboard(): Joke copied to clipboard. joke_id = 35
+2024-01-06 18:43:06,333 - WARNING - respond_to_input(): no category match. user_input = There are only 10 kinds of people in this world: those who know binary and those who don't.(by ChucklBot)
+2024-01-06 18:43:09,159 - INFO - get_favorite(): Favorite joke successfully fetched. joke_id: 257
+2024-01-06 18:43:11,710 - INFO - get_favorite(): Favorite joke successfully fetched. joke_id: 257
+2024-01-06 18:43:11,748 - INFO - copy_to_clipboard(): Favorite joke copied to clipboard. joke_id: 257
+2024-01-06 18:43:13,503 - INFO - - session end -
+2024-01-06 18:43:26,795 - INFO - - session start -
+2024-01-06 18:43:29,069 - ERROR - get_favorite(): ValueError fetching favorite joke: Expecting value: line 1 column 1 (char 0)
+2024-01-06 18:43:32,664 - ERROR - get_favorite(): ValueError fetching favorite joke: Expecting value: line 1 column 1 (char 0)
+2024-01-06 18:43:36,467 - WARNING - get_last_joke(): Joke tuple is empty.
+2024-01-06 18:43:36,467 - WARNING - save_favorite(): joke value is None. last_joke(): None
+2024-01-06 18:43:47,909 - INFO - Joke successfully fetched. Joke ID: 0
+2024-01-06 18:43:56,811 - INFO - Joke successfully fetched. Joke ID: 236
+2024-01-06 18:44:02,935 - INFO - save_favorite(): Joke saved as favorite: joke_id: 236
+2024-01-06 18:44:05,545 - INFO - get_favorite(): Favorite joke successfully fetched. joke_id: 236
+2024-01-06 18:44:12,502 - INFO - Joke successfully fetched. Joke ID: 123
+2024-01-06 18:44:12,505 - INFO - - session end -

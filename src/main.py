@@ -9,12 +9,12 @@ import difflib
 import random
 import logging as log
 
-from call_api import get_joke
-from favorite import save_favorite as favorite
-from favorite import get_favorite
-from commands_data import commands
-from copy_to_clipboard import copy_to_clipboard as copy
-from print_intro_message import print_intro_message as intro
+from src.call_api import get_joke
+from src.favorite import save_favorite as favorite
+from src.favorite import get_favorite
+from resources.commands_data import commands
+from src.copy_to_clipboard import copy_to_clipboard as copy
+from src.print_intro_message import print_intro_message as intro
 
 # last_match stores the last commands_data category matched via fuzzy matching.
 last_match = ""  # for example: "jokes" or "get_favorite".
@@ -34,41 +34,31 @@ def respond_to_input(user_input):
         match = difflib.get_close_matches(user_input, content['commands'], n=1, cutoff=0.6)
         # log.debug("respond_to_input(): match %s", match)  # debug: log match.
 
-        # TODO: can this be shortened and done more effective with less if ... list?
         if match:  # if match has any value. check the category that we are currently in.
-            if category == "jokes":
-                if get_joke() == "error":
-                    return f"Oh oh, I had problems fetching a joke."
+
+            if category == 'jokes':
+                last_match = category
+                randomize_response = random.randint(0, len(commands['jokes']['responses']) - 1)
+                return f"{commands['jokes']['responses'][randomize_response]}\n{get_joke()}"
+            elif category == 'clipboard_copy':
+                return copy(last_match)
+            elif category in ('store_favorite', 'get_favorite'):
+                if category == 'store_favorite':
+                    return favorite()
                 else:
                     last_match = category
-                    randomize_response = random.randint(0, len(commands['jokes']['responses']) - 1)
-                    return f"{commands['jokes']['responses'][randomize_response]}\n{get_joke()}"
-            if category == "greetings":
-                randomize_response = random.randint(0, len(commands['greetings']['responses']) - 1)
-                return commands['greetings']['responses'][randomize_response]
-            if category == "random":
-                randomize_response = random.randint(0, len(commands['random']['responses']) - 1)
-                return commands['random']['responses'][randomize_response]
-            if category == "smalltalk":
-                randomize_response = random.randint(0, len(commands['smalltalk']['responses']) - 1)
-                return commands['smalltalk']['responses'][randomize_response]
-            if category == "encouragement":
-                randomize_response = random.randint(0, len(commands['encouragement']['responses']) - 1)
-                return commands['encouragement']['responses'][randomize_response]
-            if category == "compliments":
-                randomize_response = random.randint(0, len(commands['compliments']['responses']) - 1)
-                return commands['compliments']['responses'][randomize_response]
-            if category == "farewells":
-                randomize_response = random.randint(0, len(commands['farewells']['responses']) - 1)
-                return commands['farewells']['responses'][randomize_response]
-            if category == "store_favorite":
-                return favorite()
-            if category == "get_favorite":
+
+                    try:
+                        joke, _ = get_favorite()  # only get joke and not joke_id from favorite return list.
+                        return joke
+                    except ValueError as e:
+                        # handling: if jason file is compromised.
+                        return f"Oh no - I had a problem fetching your favorite joke."
+
+            elif category in commands:
                 last_match = category
-                joke, _ = get_favorite()  # only get joke and not joke_id from favorite return list.
-                return joke
-            if category == "clipboard_copy":
-                return copy(last_match)
+                randomize_response = random.randint(0, len(commands[category]['responses']) - 1)
+                return f"{commands[category]['responses'][randomize_response]}"
 
     # log: user_input if no category match is found.
     log.warning("respond_to_input(): no category match. user_input = %s", user_input)
@@ -78,7 +68,7 @@ def respond_to_input(user_input):
 def main():
     # logging configuration.
     # filemode a == append -> add to existing file. level DEBUG == lowest level and accepts every log entry.
-    log.basicConfig(filename='application.log', filemode='a', level=log.DEBUG,
+    log.basicConfig(filename='../test/application.log', filemode='a', level=log.DEBUG,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
     # set logger for requests library to WARNING to not get all debugging info on our api calls.
