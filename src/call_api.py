@@ -26,7 +26,7 @@ def get_joke(test_api_endpoint=None):
             r = request.get(api_endpoint)
             if r.status_code != 200:  # API availibility check.
                 log.error("Error message: %s", r.status_code)
-                raise SystemError('Ups. API is down.')
+                raise Exception('Ups. API is down.')
 
             joke_dict = r.json()  # API response -> dict().
             joke_id = joke_dict['id']  # get joke_id to store in jokes tuple.
@@ -39,7 +39,7 @@ def get_joke(test_api_endpoint=None):
     except request.exceptions.RequestException as e:
         # handle api request exception.
         log.exception("Error message: %s", e)
-        return f"error"  # FIXME: move away from return error. Either return None or raise!
+        raise Exception("jokeapi.dev - request error.") from e
 
 
 # get the last joke.
@@ -60,7 +60,7 @@ def get_last_joke():
             if r.status_code != 200:  # API availibility check.
                 # if status_code not 200. log error.
                 log.error("get_last_joke(): request status_code error: %s", r.status_code)
-                raise SystemError('Ups. API is down.')
+                raise Exception('Ups. API is down.')
 
             joke_dict = r.json()  # store api load in dict().
             value = (joke_dict['joke'], last_id)
@@ -68,4 +68,4 @@ def get_last_joke():
         except request.exceptions.RequestException as e:
             # handle get last joke _ api request exception.
             log.exception("get_last_joke(): API exception: %s", e)
-            raise SystemError("Failed to fetch last joke.") from e
+            raise Exception("Failed to fetch last joke.") from e

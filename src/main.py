@@ -1,7 +1,6 @@
 """
 
 TODO: ask and store name for personaliziation.
-TODO: better code documentation, explanation what functions do / return / expect.
 
 """
 
@@ -39,7 +38,14 @@ def respond_to_input(user_input):
             if category == 'jokes':
                 last_match = category
                 randomize_response = random.randint(0, len(commands['jokes']['responses']) - 1)
-                return f"{commands['jokes']['responses'][randomize_response]}\n{get_joke()}"
+
+                try:
+                    joke = get_joke()
+                    return f"{commands['jokes']['responses'][randomize_response]}\n{joke}"
+                except Exception as e:
+                    log.error("respond_to_input(): if match: category == jokes -> get_joke(): %s", e)
+                    return f"Ouch - I had a problem fetching a joke."
+
             elif category == 'clipboard_copy':
                 return copy(last_match)
             elif category in ('store_favorite', 'get_favorite'):

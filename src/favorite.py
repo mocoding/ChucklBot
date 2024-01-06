@@ -14,7 +14,7 @@ from .call_api import get_last_joke as last_joke
 def save_favorite():
     try:
         joke, joke_id = last_joke()  # get last joke and joke_id/NONE if empty joke tuple.
-    except SystemError:
+    except Exception:
         log.error("save_favorite(): System Error in last_joke().")
         return f"Sorry, I had a problem fetching your joke."
 

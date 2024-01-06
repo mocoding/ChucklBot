@@ -8,10 +8,6 @@ from .favorite import get_favorite
 
 
 def copy_to_clipboard(last_match):
-    # fixme: copy your favorite joke doesn't work.(FIXED)
-    # fixme: calling last_joke first might lead to joke == "nojoke", as favorite might be called first.
-    # fixme: doing a copy on a copy does not raise the correct error message. (FIXED)
-
     # check first if last_match was 'get_favorite'.
     if last_match == "get_favorite":
 
@@ -41,7 +37,7 @@ def copy_to_clipboard(last_match):
     else:
         try:
             joke, joke_id = last_joke()  # retrieve last joke.
-        except SystemError:
+        except Exception:
             return f"Sorry - Failed to fetch joke."
 
         if joke is None:  # no joke to copy.
